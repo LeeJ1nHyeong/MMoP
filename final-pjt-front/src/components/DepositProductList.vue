@@ -49,12 +49,17 @@
                   
                   <td style="width: 150px">{{ product.kor_co_nm }}</td>
                   <td style="width: 200px ">
-                    <b-button v-b-modal="product.fin_prdt_cd" class="bg-transparent text-dark border border-gray w-200" >
+                    <b-button @click="toggleModal(product.fin_prdt_cd)" v-b-modal="product.fin_prdt_cd" class="bg-transparent text-dark border border-gray w-200" >
                       {{ product.fin_prdt_nm }}
                     </b-button>
 
-                    <b-modal :id="product.fin_prdt_cd" title="상품 상세 정보">
+                    <b-modal :id="product.fin_prdt_cd" @hidden="closeModal(product.fin_prdt_cd)" ok-only header-bg-variant="success">
                       <DepositProductDetail :fin_prdt_cd="product.fin_prdt_cd"/>
+                      <template #modal-header>
+                        <div class="w-100 d-flex align-content-center" style="color: #fff;">
+                          <h4>상품 상세정보</h4>
+                        </div>
+                      </template>
                     </b-modal>
                   </td>            
                 </tr>
@@ -79,6 +84,7 @@ export default {
   data() {
     return {
       modalShow: false,
+      openModals: [],
     }
   },
   props: {
@@ -105,8 +111,32 @@ export default {
       this.$store.dispatch('getDepositProducts')
     },
     formatNumber(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
+    toggleModal(fin_prdt_cd) {
+      if (this.openModals.includes(fin_prdt_cd)) {
+        // 이미 열린 모달이 있는 경우 모달을 닫음
+        this.closeModal(fin_prdt_cd);
+      } else {
+        // 열린 모달이 없는 경우 모달을 열고 openModals 배열에 추가
+        this.openModal(fin_prdt_cd);
+      }
+    },
+
+    openModal(fin_prdt_cd) {
+      this.openModals.push(fin_prdt_cd);
+      this.$bvModal.show(fin_prdt_cd);
+    },
+
+    closeModal(fin_prdt_cd) {
+      const index = this.openModals.indexOf(fin_prdt_cd);
+      if (index > -1) {
+        this.openModals.splice(index, 1);
+      }
+      this.$bvModal.hide(fin_prdt_cd);
+    },
+
   }
 }
 </script>
@@ -150,6 +180,5 @@ export default {
 .fix_body td {
   text-align: center;
 }
-
 
 </style>

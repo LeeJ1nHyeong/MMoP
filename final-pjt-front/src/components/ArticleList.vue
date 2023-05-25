@@ -4,7 +4,7 @@
 
 
     <!-- 내용 영역 -->
-    <div class="article-list-container">
+    <div class="article-list-container" style="text-align: center;">
       <h2 class="mt-4 mb-3 p-2">총 {{ articles.length }}개의 게시글이 있습니다</h2>
 
       <div class="d-flex justify-content-end mr-2">
@@ -19,7 +19,7 @@
           {{ item.username }}
         </template>
         <template #cell(created_at)="{ item }">
-          {{ item.created_at }}
+          {{ item.created_at.slice(0, 19).replace('T', ' ') }}
         </template>
       </b-table>
 
@@ -36,14 +36,12 @@
 
 <script>
 import { BTable, BPagination } from 'bootstrap-vue'
-import ArticleListItem from './ArticleListItem.vue'
 
 export default {
   name: 'ArticleList',
   components: {
     BTable,
     BPagination,
-    ArticleListItem,
   },
   data() {
     return {

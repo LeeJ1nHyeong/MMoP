@@ -1,6 +1,6 @@
 <template>
 
-<div class="cal-container m-5 p-5 ">
+<div class="cal-container m-5 p-5">
     <h2><strong>환율 계산기</strong></h2>
     <div class="d-flex m-5">
       <div>
@@ -12,7 +12,7 @@
 
       <div>
         <b-form-select v-model="exchange2" :options="exchangeName"></b-form-select>
-        <b-form-input type="number" v-model="exchangeOutput" ></b-form-input>
+        <b-form-input type="number" disabled v-model="exchangeOutput" ></b-form-input>
       </div>
     </div>
 </div>

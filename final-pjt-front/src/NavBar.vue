@@ -7,10 +7,10 @@
             <img src="./assets/mmop.png" alt="" style="max-width:250px">
         </router-link>
         <router-link :to="{ name: 'home' }">홈</router-link>
-        <router-link @click.native="goToLogin" to="/finance">금융상품비교</router-link>
-        <router-link @click.native="goToLogin" to="/map">우리동네은행</router-link> 
+        <router-link to="/finance">금융상품비교</router-link>
+        <router-link to="/map">우리동네은행</router-link> 
         <router-link to="/community">커뮤니티</router-link>
-        <router-link @click.native="goToLogin" to="/exchange">환율</router-link>
+        <router-link to="/exchange">환율</router-link>
       </div>
 
       <div class='account'>
@@ -51,14 +51,6 @@ export default {
         alert('로그아웃 되었습니다!')
         this.$router.push({ name: 'login' }) // 로그인 페이지로 이동
       },
-
-      goToLogin() {
-        if (!this.isLogin) {
-          alert('로그인이 필요한 서비스입니다.')
-          this.$router.push({ name: 'login' })
-        }
-
-      },
     },
 }
 </script>
@@ -67,7 +59,7 @@ export default {
     
 
 .nav-container {
-  display: flex; /* 주축과 교차축 나눠서 아이템식 */
+display: flex; /* 주축과 교차축 나눠서 아이템식 */
 justify-content: space-between;
 background-color: #fff;
 width: 100%;

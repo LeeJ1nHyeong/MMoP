@@ -25,7 +25,7 @@
           <div class="description text-center">
             <p>{{ content }}</p>
           </div>
-          <div v-if="!(profile)">
+          <!-- <div v-if="!(profile)">
             프로필을 작성하세요
             <button class="btn btn-primary">프로필 생성</button>
           </div>
@@ -39,9 +39,9 @@
             <div>
               거주지 : {{ profile.residence }}
             </div>
-          </div>
+          </div> -->
         </b-tab>
-        <b-tab title="관심상품">
+        <b-tab title="관심상품" style="text-align: center;">
           <h3 style="font-weight: bold;">총 {{ profile.likedeposits_count + profile.likesavings_count }}개의 관심상품이 있습니다.</h3>
           <hr style="border: none; border-top: 3px solid black;">
           <div class="row d-flex align-items-stretch">
@@ -70,7 +70,7 @@
           <div class="tab-content tab-space">
             <div class="tab-pane work active show" id="work">
               <div>
-                <h4 class="title">총 {{ profile.articles_count }}개의 글이 있습니다</h4>
+                <h4 class="title" style="text-align: center;">총 {{ profile.articles_count }}개의 글이 있습니다</h4>
                   <div class="row d-flex justify-content-center align-items-center">
                 <!-- <div class="col-md-7 ml-auto mr-auto"> -->
                     <div v-if="!profile.articles_count">
@@ -81,7 +81,7 @@
                     <!-- 게시글 1 -->
                     <div v-for="article in profile.article_set" :key="article.id" class="col-6">
                       <!-- asset에 있는 사진으로 바꾸고 싶은데 왜 안되냐...  -->
-                      <div class="card card-background m-2" style="background-image: url('http://www.backdownsouth.com/wp-content/uploads/2016/11/sockfancy004.jpg')">
+                      <div class="card card-background m-2">
                         <a href="#pablo"></a>
                         <div class="card-body">
                           <label class="badge">{{ article.created_at.slice(0, 19).replace('T', ' ') }}</label>
@@ -122,7 +122,7 @@
       </b-tabs>
     </b-card>
     <!-- 팝업창 -->
-    <div class="recommend">
+    <div class="recommend" style="text-align: center;">
       <div>
         <h1>이런 상품은 어때요?</h1>
       </div>
