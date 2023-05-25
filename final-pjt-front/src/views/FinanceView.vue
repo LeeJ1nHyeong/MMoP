@@ -64,7 +64,7 @@ export default {
   width: 1200px;
   margin: 0 auto;
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
   flex-grow:1;
 }
 

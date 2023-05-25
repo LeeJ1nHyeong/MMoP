@@ -35,6 +35,7 @@ def deposit_products(request):  # 정기예금 데이터 저장 및 전체 조�
         for b in base:
             deposit = DepositProducts()
             deposit.fin_prdt_cd = b.get('fin_prdt_cd')
+            deposit.dcls_month = b.get('dcls_month')
             deposit.kor_co_nm = b.get('kor_co_nm')
             deposit.fin_prdt_nm = b.get('fin_prdt_nm')
             deposit.etc_note = b.get('etc_note')
@@ -77,6 +78,7 @@ def saving_products(request):  # 정기적금 데이터 저장 및 전체 조회
         for b in base:
             saving = SavingProducts()
             saving.fin_prdt_cd = b.get('fin_prdt_cd')
+            saving.dcls_month = b.get('dcls_month')
             saving.kor_co_nm = b.get('kor_co_nm')
             saving.fin_prdt_nm = b.get('fin_prdt_nm')
             saving.etc_note = b.get('etc_note')
